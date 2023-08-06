@@ -1,0 +1,17 @@
+﻿@{
+    ViewData["Title"] = "GetById";
+}
+<h1>office details</h1>
+
+<div class="card" style="width: 18rem;">
+  <img src="https://t4.ftcdn.net/jpg/03/84/55/29/360_F_384552930_zPoe9zgmCF7qgt8fqSedcyJ6C6Ye3dFs.jpg" class="card-img-top" alt="...">
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">name:  @Model.Name</li>
+        <li class="list-group-item">Location:   @Model.Location</li>
+    </ul>
+    
+    <a asp-action="index" >
+      <button class="btn btn-danger" asp-action="index" asp-controller="Employee">back</button>
+       </a>
+</div>
+

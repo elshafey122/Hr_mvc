@@ -1,0 +1,34 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    int i = 1;
+}
+<h1>Employees</h1>
+
+<a asp-action="AddEmployee" class="btn btn-primary">Add</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">controls</th>
+        </tr>
+  </thead>
+  <tbody>
+      @foreach(var item in Model)
+      {
+         <tr class="table-info">
+              <td>@(i++)</td>
+              <td>@item.Name</td>
+              <td>@item.Email</td>
+              <td>
+                  <a asp-action="details"asp-route-id="@item.Id" class="btn btn-info">details</a>
+                  <a asp-action="edit"   asp-route-id="@item.Id" class="btn btn-success">edit</a>
+                  <a asp-action="delete" asp-route-id="@item.Id" class="btn btn-danger">delete</a>
+              </td>
+         </tr>
+      }
+  </tbody>
+</table>
+

@@ -1,0 +1,66 @@
+﻿
+@model EmployeeViewModel
+@{
+    ViewData["Title"] = "AddEmployee";
+}
+
+<h1>@(Model.Id>0 ?"Edit":"Add")</h1>
+
+
+<form method="post" asp-action=@(Model.Id>0?"edit":"AddEmployee")>
+    <div class="form-group">
+      <label asp-for="@Model.Name" >Name</label>
+      <input type="text" class="form-control" asp-for="@Model.Name" value=@(Model.Id> 0 ? Model.Name :string.Empty)>
+      <span asp-validation-for="Name" class="text-danger"></span>
+  </div>
+
+   <div class="form-group">
+      <label asp-for="@Model.Age">Age</label>
+      <input type="text" asp-for="@Model.Age" class="form-control" value=@(Model.Id>0? Model.Age:string.Empty) >
+      <span asp-validation-for="@Model.Age" class="text-danger"></span>  
+  </div>
+
+    <<div class="form-group">
+      <label asp-for="@Model.Salary">Salary</label>
+      <input type="text" class="form-control" asp-for="@Model.Salary" value=@(Model.Id>0?Model.Salary:string.Empty)>
+      <span asp-validation-for="@Model.Salary" class="text-danger"></span>
+  </div>
+
+    <div class="form-group">
+      <label asp-for="@Model.Email">Email</label>
+      <input type="text" class="form-control" asp-for="@Model.Email" value=@(Model.Id>0? Model.Email:string.Empty)>
+      <span asp-validation-for="@Model.Email" class="text-danger"></span>
+  </div>
+
+     <div class="form-group d-@(Model.Id>0?"none":"block")">
+      <label asp-for="@Model.Password">Password</label>
+      <input type="text" class="form-control" asp-for="@Model.Password" value=@(Model.Id>0?Model.Password:string.Empty)>
+      <span asp-validation-for="@Model.Password" class="text-danger"></span>
+  </div>
+
+  @*@*<div class="form-group">
+      <label asp-for="@Model.OfficeId" class="form-label">Offices</label>
+      <select class="form-select" asp-for="@Model.OfficeId">
+            @foreach(var item in ViewBag.Offices)
+            {
+                <option value="@item.Id">@item.Name</option>
+            }
+        </select>
+  </div>*@
+
+  <div class="form-group">
+      <label asp-for="@Model.OfficeId" class="form-label">Offices</label>
+      <select class="form-select" asp-for="@Model.OfficeId" asp-items="@ViewBag.Offices">
+               <option selected>open this select items</option>
+        </select>
+  </div>
+
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+ @section Scripts {
+    <partial name="_ValidationScriptsPartial" /> 
+ }

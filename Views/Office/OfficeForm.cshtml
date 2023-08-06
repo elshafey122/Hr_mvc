@@ -1,0 +1,33 @@
+﻿@model OfficeViewModel
+@{
+    ViewData["Title"] = "AddOffice";
+}
+
+<h1>@(Model.Id>0?"Edit Office":"Add Office")</h1>
+
+<form method="post" asp-action=@(Model.Id>0?"edit":"AddOffice")>
+  <div class="form-row">
+    <div class="form-group ">
+      <label asp-for="@Model.Name">Name</label>
+      <input type="text" class="form-control" placeholder="Name" asp-for="@Model.Name" value="@(Model.Id>0?Model.Name:string.Empty)">
+      <span asp-validation-for="@Model.Name" class="text-danger"></span>
+    </div>
+
+    <div class="form-group ">
+      <label asp-for="@Model.Location">Location</label>
+      <input type="text" class="form-control" placeholder="Location" asp-for="@Model.Location" value="@(Model.Id>0?Model.Location:string.Empty)">
+      <span asp-validation-for="@Model.Location" class="text-danger"></span>
+    </div>
+
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+  <button type="submit" class="btn btn-primary">submit</button>
+</form>
+
+
+ @section Scripts {
+    <partial name="_ValidationScriptsPartial" /> 
+ }
+
+
+

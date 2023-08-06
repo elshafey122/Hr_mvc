@@ -1,0 +1,33 @@
+﻿@model ProjectViewModel
+@{
+    ViewData["Title"] = "AddProject";
+}
+
+<h1>@(Model.Id>0?"Edit Project":"Add Project")</h1>
+
+<form method="post" asp-action=@(Model.Id>0?"edit":"AddProject")>
+  <div class="form-row">
+    <div class="form-group ">
+      <label asp-for="@Model.Name">Name</label>
+      <input type="text" class="form-control" placeholder="Name" asp-for="@Model.Name" value="@(Model.Id>0?Model.Name:string.Empty)">
+      <span asp-validation-for="@Model.Name" class="text-danger"></span>
+    </div>
+
+    <div class="form-group ">
+      <label asp-for="@Model.Description"></label>
+      <input type="text" class="form-control" placeholder="Description" asp-for="@Model.Description" value="@(Model.Id>0?Model.Description:string.Empty)">
+      <span asp-validation-for="@Model.Description" class="text-danger"></span>
+    </div>
+
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+  <button type="submit" class="btn btn-primary">submit</button>
+</form>
+
+
+ @section Scripts {
+    <partial name="_ValidationScriptsPartial" /> 
+ }
+
+
+

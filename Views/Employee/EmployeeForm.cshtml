@@ -4,7 +4,7 @@
     ViewData["Title"] = "AddEmployee";
 }
 
-<h1>@(Model.Id>0 ?"Edit":"Add")</h1>
+<h1>@(Model.Id>0 ?"Edit":"Add") Employee</h1>
 
 
 <form method="post" asp-action=@(Model.Id>0?"edit":"AddEmployee")>
@@ -38,6 +38,12 @@
       <span asp-validation-for="@Model.Password" class="text-danger"></span>
   </div>
 
+  <div class="form-group d-@(Model.Id>0?"none":"block")">
+      <label asp-for="@Model.ConfirmPassword"></label>
+      <input type="text" class="form-control" asp-for="@Model.ConfirmPassword" value=@(Model.Id>0?Model.ConfirmPassword:string.Empty)>
+      <span asp-validation-for="@Model.ConfirmPassword" class="text-danger"></span>
+  </div>
+
   @*@*<div class="form-group">
       <label asp-for="@Model.OfficeId" class="form-label">Offices</label>
       <select class="form-select" asp-for="@Model.OfficeId">
@@ -49,14 +55,15 @@
   </div>*@
 
   <div class="form-group">
-      <label asp-for="@Model.OfficeId" class="form-label">Offices</label>
+      <label asp-for="@Model.OfficeId" class="form-label"></label>
       <select class="form-select" asp-for="@Model.OfficeId" asp-items="@ViewBag.Offices">
                <option selected>open this select items</option>
-        </select>
+              <span asp-validation-for="@Model.OfficeId"></span>
+      </select>
   </div>
 
-    <div asp-validation-summary="All" class="text-danger"></div>
-
+    @*<div asp-validation-summary="All" class="text-danger"></div>*@
+    <br />
 
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>

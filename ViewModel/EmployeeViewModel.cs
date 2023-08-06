@@ -15,7 +15,7 @@ namespace mvclab2.ViewModel
 
 
         [Required(ErrorMessage = "you must input age between")]
-        [Range(23, 60, ErrorMessage = "you must input age between 23,60")]
+        [Range(23, 60, ErrorMessage = "you must input age between 23 60")]
         public int Age { get; set; }
 
         [Display(Name ="Net Salary")]
@@ -31,10 +31,21 @@ namespace mvclab2.ViewModel
 
         [DataType(DataType.Password)]
         [Required(ErrorMessage = "you must enter password")]
+        [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,15}$", ErrorMessage = "Password must be between 6 and 20 characters and contain one uppercase letter, one lowercase letter, one digit and one special character.")]
         public string Password { get; set; }
-        [DisplayName("OfficeNumber")]
 
+
+        [DisplayName("Confirm Password")]
+        [DataType(DataType.Password)]
+        [Required(ErrorMessage = "you must enter confirmed password")]
+        [Compare("Password",ErrorMessage ="you should input same password")]
+        public string ConfirmPassword { get; set; }
+
+
+
+        [DisplayName("OfficeNumber")]
         public int? OfficeId { get; set; }
+
 
         public Office? office { get; set; }
     }

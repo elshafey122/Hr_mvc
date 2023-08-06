@@ -43,7 +43,7 @@ namespace mvc2.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> AddEmployee(EmployeeViewModel emp)
         {
-            try
+            if (ModelState.IsValid)
             {
                 var employee = new Employee()
                 {
@@ -58,11 +58,13 @@ namespace mvc2.Controllers
                 _context.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
-            catch(Exception ex)
+            else
             {
-                return Content(ex.Message);
+                return RedirectToAction(nameof(Index));
             }
         }
+
+
         [HttpGet]
         public async Task<IActionResult> edit(int id)
         {
@@ -73,7 +75,6 @@ namespace mvc2.Controllers
             List<Office> offices = await _context.offices.ToListAsync();
             //ViewBag.Offices = offices;
             ViewBag.Offices = new SelectList(offices, "Id", "Name");
-            
             
             var res = await _context.employees.Include(x=>x.office).SingleOrDefaultAsync(x => x.Id == id);
             if (res == null)
@@ -87,7 +88,6 @@ namespace mvc2.Controllers
                 Email = res.Email,
                 Name = res.Name,
                 Salary = res.Salary,
-                Password = res.Password,
                 Id=res.Id,
                 OfficeId=res.OfficeId,
             };
@@ -113,7 +113,6 @@ namespace mvc2.Controllers
             _context.SaveChanges();
             return RedirectToAction(nameof(Index));
         }
-        [HttpDelete]
         public async Task<IActionResult> delete(int id)
         {
             var res = await _context.employees.SingleOrDefaultAsync(x => x.Id == id);

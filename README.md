@@ -1,4 +1,4 @@
 # employees sys using mvc
 build cruid operations for employee , offices , projects
-apply authentication using session 
+apply login and register using session 
 add bootstrab template 

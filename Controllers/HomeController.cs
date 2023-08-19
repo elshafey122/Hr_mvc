@@ -2,7 +2,7 @@
 using mvclab2.Models;
 using System.Diagnostics;
 
-namespace mvclab2.Controllers
+namespace CruidApplication.Controllers
 {
     public class HomeController : Controller
     {

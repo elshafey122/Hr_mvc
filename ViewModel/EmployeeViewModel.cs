@@ -1,4 +1,6 @@
-﻿using mvc2.Models;
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using mvc2.Models;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
@@ -46,7 +48,9 @@ namespace mvclab2.ViewModel
         [DisplayName("OfficeNumber")]
         public int? OfficeId { get; set; }
 
+        [ValidateNever]
+        public SelectList offices { get; set; }
 
-        public Office? office { get; set; }
+
     }
 }

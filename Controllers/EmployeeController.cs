@@ -33,10 +33,12 @@ namespace mvc2.Controllers
         [HttpGet]
         public async Task<IActionResult> AddEmployee()
         {
-            var offices = await _context.offices.ToListAsync();
-            var viewmodel = new EmployeeViewModel();
-            ViewBag.Offices = new SelectList(offices, "Id", "Name");
-            return View("EmployeeForm",viewmodel);
+            var _offices = await _context.offices.ToListAsync();
+            var viewmodel = new EmployeeViewModel()
+            {
+                offices = new SelectList(_offices, "Id", "Name"),
+            };
+            return View("EmployeeForm", viewmodel);
         }
 
         [HttpPost]
@@ -90,6 +92,7 @@ namespace mvc2.Controllers
                 Salary = res.Salary,
                 Id=res.Id,
                 OfficeId=res.OfficeId,
+                offices=new SelectList(offices, "Id", "Name"),
             };
             return View("EmployeeForm", editemployee);
         }

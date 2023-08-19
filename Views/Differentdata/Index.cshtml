@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    IDictionary<string, string> dict = new Dictionary<string, string>();
+    dict.Add("name", "ali");
+    dict.Add("age","22");
+}
+
+<h1>SetTemp</h1>
+
+<a asp-controller="Differentdata" asp-action="SetTemp" asp-all-route-data="dict">set temp</a>
+<a asp-controller="Differentdata" asp-action="GetTemp" >get temp</a>
+<a asp-controller="Differentdata" asp-action="GetTemp2" >get temp2</a>
+
+<br/>
+<a asp-controller="Differentdata" asp-action="SetSession" asp-all-route-data="dict">set session</a>
+<a asp-controller="Differentdata" asp-action="GetSession" >get session</a>
+<a asp-controller="Differentdata" asp-action="DeleteSession" >delete session</a>
+
+
+
+

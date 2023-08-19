@@ -22,9 +22,9 @@
               <td>@(i++)</td>
               <td>@item.Name</td>
               <td>
-                  <a asp-action="GetById"asp-route-id="@item.Id" class="btn btn-info">details</a>
-                  <a asp-action="edit"   asp-route-id="@item.Id" class="btn btn-success">edit</a>
-                  <a asp-action="delete" asp-route-id="@item.Id" class="btn btn-danger">delete</a>
+                  <a asp-action="GetById"asp-route-id="@item.Id" class="btn btn-info"><i class="fa-solid fa-circle-info"></i></a>
+                  <a asp-action="edit"   asp-route-id="@item.Id" class="btn btn-success"><i class="fa-solid fa-pen-to-square"></i></a>
+                  <a asp-action="delete" asp-route-id="@item.Id" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
               </td>
          </tr>
       }
